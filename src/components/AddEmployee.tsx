@@ -16,7 +16,7 @@ const AddEmployee = (props: Props) => {
   const [email, setEmail] = useInputHandler("");
 
   const onAddEmpClick = (e: any) => {
-    e.preventdefault();
+    e.preventDefault();
     const data: Employee = {
       id: new Date().toJSON().toString(),
       firstname: firstName,
@@ -24,6 +24,7 @@ const AddEmployee = (props: Props) => {
       email: email,
     };
     onSubmitClickHnd(data);
+    onBackClick();
   };
 
   return (

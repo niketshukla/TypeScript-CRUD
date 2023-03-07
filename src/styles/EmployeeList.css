@@ -1,3 +1,7 @@
 h2.ui.header.pageHeader {
-  margin: 20px 0px 30px;
+  margin: 20px 0px 0px;
+}
+.ui.primary.button.addEmp {
+  float: right;
+  margin: 0px 0px 10px;
 }

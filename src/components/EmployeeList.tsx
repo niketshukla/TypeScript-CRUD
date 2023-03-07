@@ -5,16 +5,17 @@ import { Employee } from "./Employee.type";
 type Props = {
   list: Employee[];
   addEmpHandler: () => void; // this is the way to write type for callback function
+  deleteEmpHandler: (data: Employee) => void;
 };
 
 const EmployeeList = (props: Props) => {
-  const { list, addEmpHandler } = props;
+  const { list, addEmpHandler, deleteEmpHandler } = props;
   return (
     <div>
-      <h2 className="ui center aligned header pageHeader">Employee List</h2>
       <button className="ui primary button addEmp" onClick={addEmpHandler}>
         Add Employee
       </button>
+      <h2 className="ui center aligned header pageHeader">Employee List</h2>
       <table className="ui striped table">
         <thead>
           <tr>
@@ -34,7 +35,9 @@ const EmployeeList = (props: Props) => {
                 <td>
                   <button className="ui primary button">View</button>
                   <button className="ui primary button">Edit</button>
-                  <button className="ui primary button">Delete</button>
+                  <button className="ui primary button" onClick={() => deleteEmpHandler(emp)}>
+                    Delete
+                  </button>
                 </td>
               </tr>
             );
