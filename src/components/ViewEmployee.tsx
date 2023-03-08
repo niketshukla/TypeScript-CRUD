@@ -1,22 +1,11 @@
+import "../styles/ModalStyle.css";
+
 const ViewEmployee = () => {
   return (
-    <div className="ui basic modal">
-      <div className="ui icon header">
-        <i className="archive icon"></i>
-        Archive Old Messages
-      </div>
-      <div className="content">
-        <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
-      </div>
-      <div className="actions">
-        <div className="ui red basic cancel inverted button">
-          <i className="remove icon"></i>
-          No
-        </div>
-        <div className="ui green ok inverted button">
-          <i className="checkmark icon"></i>
-          Yes
-        </div>
+    <div id="myModal" className="modal">
+      <div className="modal-content">
+        <span className="close">&times;</span>
+        <p>Some text in the Modal..</p>
       </div>
     </div>
   );

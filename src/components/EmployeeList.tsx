@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/EmployeeList.css";
 import { Employee } from "./Employee.type";
+import ViewEmployee from "./ViewEmployee";
 
 type Props = {
   list: Employee[];
@@ -10,6 +11,13 @@ type Props = {
 
 const EmployeeList = (props: Props) => {
   const { list, addEmpHandler, deleteEmpHandler } = props;
+
+  const [showModal, setShowModal] = useState(false);
+
+  const viewEmployeeRecord = () => {
+    setShowModal(true);
+  };
+
   return (
     <div>
       <button className="ui primary button addEmp" onClick={addEmpHandler}>
@@ -33,7 +41,9 @@ const EmployeeList = (props: Props) => {
                 <td>September 14, 2013</td>
                 <td>{emp.email}</td>
                 <td>
-                  <button className="ui primary button">View</button>
+                  <button className="ui primary button" onClick={viewEmployeeRecord}>
+                    View
+                  </button>
                   <button className="ui primary button">Edit</button>
                   <button className="ui primary button" onClick={() => deleteEmpHandler(emp)}>
                     Delete
@@ -44,6 +54,7 @@ const EmployeeList = (props: Props) => {
           })}
         </tbody>
       </table>
+      {showModal && <ViewEmployee />}
     </div>
   );
 };
