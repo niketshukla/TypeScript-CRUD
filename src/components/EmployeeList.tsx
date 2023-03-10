@@ -13,9 +13,14 @@ const EmployeeList = (props: Props) => {
   const { list, addEmpHandler, deleteEmpHandler } = props;
 
   const [showModal, setShowModal] = useState(false);
+  const [modalEmployeeRecord, setModalEmployeeRecord] = useState(null as Employee | null);
 
-  const viewEmployeeRecord = () => {
+  const viewEmployeeRecord = (data: Employee) => {
+    setModalEmployeeRecord(data);
     setShowModal(true);
+  };
+  const onModalClose = () => {
+    setShowModal(false);
   };
 
   return (
@@ -41,7 +46,7 @@ const EmployeeList = (props: Props) => {
                 <td>September 14, 2013</td>
                 <td>{emp.email}</td>
                 <td>
-                  <button className="ui primary button" onClick={viewEmployeeRecord}>
+                  <button className="ui primary button" onClick={() => viewEmployeeRecord(emp)}>
                     View
                   </button>
                   <button className="ui primary button">Edit</button>
@@ -54,7 +59,9 @@ const EmployeeList = (props: Props) => {
           })}
         </tbody>
       </table>
-      {showModal && <ViewEmployee />}
+      {showModal && modalEmployeeRecord !== null && (
+        <ViewEmployee onModalClose={onModalClose} data={modalEmployeeRecord} />
+      )}
     </div>
   );
 };
