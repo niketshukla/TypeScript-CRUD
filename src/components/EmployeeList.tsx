@@ -7,10 +7,11 @@ type Props = {
   list: Employee[];
   addEmpHandler: () => void; // this is the way to write type for callback function
   deleteEmpHandler: (data: Employee) => void;
+  showEditPage: (data: Employee) => void;
 };
 
 const EmployeeList = (props: Props) => {
-  const { list, addEmpHandler, deleteEmpHandler } = props;
+  const { list, addEmpHandler, deleteEmpHandler, showEditPage } = props;
 
   const [showModal, setShowModal] = useState(false);
   const [modalEmployeeRecord, setModalEmployeeRecord] = useState(null as Employee | null);
@@ -49,7 +50,9 @@ const EmployeeList = (props: Props) => {
                   <button className="ui primary button" onClick={() => viewEmployeeRecord(emp)}>
                     View
                   </button>
-                  <button className="ui primary button">Edit</button>
+                  <button className="ui primary button" onClick={() => showEditPage(emp)}>
+                    Edit
+                  </button>
                   <button className="ui primary button" onClick={() => deleteEmpHandler(emp)}>
                     Delete
                   </button>
