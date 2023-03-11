@@ -47,6 +47,9 @@ const App = () => {
     const indexOfRecord = employeeList.indexOf(filteredData);
     const tempData = [...employeeList];
     tempData[indexOfRecord] = data;
+    // console.log(filteredData);
+    // console.log(tempData);
+    // console.log(data);
     setEmployeeList(tempData);
   };
 
